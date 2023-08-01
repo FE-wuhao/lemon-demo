@@ -2,7 +2,7 @@
  * @Author: nhsoft.wh
  * @Date: 2023-08-01 08:52:20
  * @LastEditors: nhsoft.wh
- * @LastEditTime: 2023-08-01 10:13:21
+ * @LastEditTime: 2023-08-01 10:26:51
  * @Description: file content
  */
 import electricalMachineryModel from "@/assets/electricalMachinery.gltf";
@@ -51,9 +51,25 @@ export const addLight = (scene: THREE.Scene) => {
   // 创建环境光
   const envLight = new THREE.AmbientLight("#ffffff", 0.4);
   // 设置环境光位置
-  envLight.position.set(5, 5, 5);
+  envLight.position.set(50, 50, 50);
   // 环境光加入场景
   scene.add(envLight);
+  // 创建点光源
+  const spotLight = new THREE.SpotLight("#ffffff", 10);
+  // 设置点光源位置
+  spotLight.position.set(2, 2, 2);
+  // 设置点光源可见
+  spotLight.visible = true;
+  // 点光源加入场景
+  scene.add(spotLight);
+  // 创建点光源
+  const spotLight1 = new THREE.SpotLight("#ffffff", 10);
+  // 设置点光源位置
+  spotLight1.position.set(-2, -2, -2);
+  // 设置点光源可见
+  spotLight1.visible = true;
+  // 点光源加入场景
+  scene.add(spotLight1);
 };
 
 /**
@@ -112,14 +128,15 @@ export const initThreeDimensional =
 
     // 创建场景
     const scene = createScene();
+    // 为场景添加光源
+    addLight(scene);
     // 创建相机
     const camera = createCamera(
       appenddedNode?.clientWidth / appenddedNode?.clientHeight
     );
     // 将相机加入场景
     scene.add(camera);
-    // 为场景添加光源
-    addLight(scene);
+
     // 创建渲染器
     const renderer = createRenderer(appenddedNode as HTMLElement);
 
