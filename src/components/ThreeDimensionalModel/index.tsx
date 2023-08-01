@@ -2,7 +2,7 @@
  * @Author: nhsoft.wh
  * @Date: 2023-08-01 08:52:20
  * @LastEditors: nhsoft.wh
- * @LastEditTime: 2023-08-01 10:26:51
+ * @LastEditTime: 2023-08-01 10:30:30
  * @Description: file content
  */
 import electricalMachineryModel from "@/assets/electricalMachinery.gltf";
@@ -107,7 +107,7 @@ export const createRenderer = (
   // 创建渲染器
   const renderer = new THREE.WebGLRenderer();
   // 设置画布的宽高为屏幕宽高
-  renderer.setSize(canvasWidth, canvasHeight);
+  renderer.setSize(window.innerWidth, window.innerHeight);
   // 设置画布背景色
   renderer.setClearColor("#FFF", 0);
   // 将画布挂载到指定元素上（不传默认body）
@@ -132,7 +132,7 @@ export const initThreeDimensional =
     addLight(scene);
     // 创建相机
     const camera = createCamera(
-      appenddedNode?.clientWidth / appenddedNode?.clientHeight
+      window.innerWidth / window.innerHeight
     );
     // 将相机加入场景
     scene.add(camera);
